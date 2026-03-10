@@ -1,3 +1,4 @@
+const { request } = require('express');
 const { Autores } = require('../models');
 
 const getAllAuthors = async (req, res) => {
@@ -38,53 +39,67 @@ const createSpecificAuthor = async (req, res) => {
   }
 };
 
-const createAuthor = async (req, res) => {
-  try {
-    // Read from body (preferred)
-    let {
+const createAuthor = async (req, res) => 
+  {
+    try 
+    {
+      // Read from body (preferred)
+      let 
+      {
         id,
         FirstName,
         LastName,
         BirthYear,
         Nationality
-    } = req.body || {};
+      } = req.body || {};
 
-    if (!FirstName || !LastName) {
-        return res.status(400).json({
+      if (!FirstName || !LastName) 
+        {
+          return res.status(400).json
+          ({
             error: 'FirstName y LastName son campos requeridos'
-        });
-    }
-    if (BirthYear !== undefined && BirthYear !== null && !Number.isInteger(BirthYear)) {
-        return res.status(400).json({ error: 'BirthYear debe ser un numero' });
-    }
+          });
+        }
+    
+        if (BirthYear !== undefined && BirthYear !== null && !Number.isInteger(BirthYear)) 
+          {
+            return res.status(400).json({ error: 'BirthYear debe ser un numero' });
+          }else if (request.body.FirstName == undefined && request.body.LastName) 
+            {
+              request.body.FirstName ="Anonimo" 
+              request.body.LastName = "Anonimo"
+            } 
 
-    const created = await Autores.create({
-        id,
-        FirstName,
-        LastName,
-        BirthYear: Number(BirthYear) ?? null,
-        Nationality: Nationality ?? null
-    });
+            const created = await Autores.create
+            ({
+              id,
+              FirstName,
+              LastName,
+              BirthYear: Number(BirthYear) ?? null,
+              Nationality: Nationality ?? null
+            });
 
-    res
-      .status(201)
-      .location(`/dbTest/${created.id || created.username || created.FirstName}-${created.LastName}`)
-      .json({
-        message: 'Autor creado exitosamente',
-        data: created
-      });
+            res
+            .status(201)
+            .location(`/dbTest/${created.id || created.username || created.FirstName}-${created.LastName}`)
+            .json
+            ({
+              message: 'Autor creado exitosamente',
+              data: created
+            });
 
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({
-      error: error.message || 'Fallo al crear autor'
-    });
-  }
+    } catch (error) 
+      {
+        console.error('Error:', error);
+        res.status(500).json
+          ({
+            error: error.message || 'Fallo al crear autor'  
+          });  
+      }
 };
 
-
-
-module.exports = {
+module.exports = 
+{
   getAllAuthors,
   createSpecificAuthor,
   createAuthor
