@@ -10,16 +10,16 @@ post:
           properties:
             Title:
               type: string
-              example: "Cien años de soledad"
+              example: "la sombra del viento"
             AuthorID:
               type: string
               example: "1"
             Genre:
               type: string
-              example: "Fiction"
+              example: "Ficcion"
             PublicationYear:
               type: string
-              example: "1967"
+              example: "2001"
             isbn:
               type: string
               example: "978-0-525-95024-3"
@@ -36,10 +36,10 @@ post:
             status: '201'
             data:
               id: 1
-              Title: "Cien años de soledad"
+              Title: "la sombra del viento"
               AuthorID: "1"
-              Genre: "Fiction"
-              PublicationYear: "1967"
+              Genre: "Ficcion"
+              PublicationYear: "2001"
               isbn: "978-0-525-95024-3"
               PageCount: "417"
 
@@ -80,10 +80,10 @@ get:
             message: "Libro leido exitosamente"
             data:
               id: 1
-              Title: "Cien años de soledad"
+              Title: "la sombra del viento"
               AuthorID: "1"
-              Genre: "Fiction"
-              PublicationYear: "1967"
+              Genre: "Ficcion"
+              PublicationYear: "2001"
               isbn: "978-0-525-95024-3"
               PageCount: "417"
 

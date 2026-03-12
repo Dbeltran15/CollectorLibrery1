@@ -10,17 +10,17 @@ post:
           properties:
             FirstName:
               type: string
-              example: "Gabriel"
+              example: "Riki"
             LastName:
               type: string
-              example: "Marquez"
+              example: "Blanco"
             BirthYear:
               type: string
-              example: "1927"
+              example: "2001"
             Nationality:
               type: string
               nullable: true
-              example: "Colombian"
+              example: "Ecuatoriano"
 
   responses:
     '201':
@@ -31,10 +31,10 @@ post:
             status: '201'
             data:
               id: 1
-              FirstName: "Gabriel"
-              LastName: "Marquez"
-              BirthYear: "1927"
-              Nationality: "Colombian"
+              FirstName: "Riki"
+              LastName: "Blanco"
+              BirthYear: "2001"
+              Nationality: "Ecuatoriano"
 
     '406':
       description: No se recibieron datos
