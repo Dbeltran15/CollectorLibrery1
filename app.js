@@ -3,10 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var swaggerSetup = require('./config/swagger.js');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var routeRouter = require('./routes/routesTest');
+var dbTestRouter = require('./routes/dbTest');
+var authorsRouter = require('./routes/authors');
+var booksRouter = require('./routes/books');
 
 var app = express();
 
@@ -23,7 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/TestRoute', routeRouter);
+app.use('/dbTest', dbTestRouter);
+app.use('/api/authors', authorsRouter);
+app.use('/api/books', booksRouter);
 
+swaggerSetup(app);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

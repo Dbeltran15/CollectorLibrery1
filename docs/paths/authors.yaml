@@ -1,0 +1,53 @@
+post:
+  summary: Create a new author
+  tags: [ Authors ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            FirstName:
+              type: string
+              example: "Riki"
+            LastName:
+              type: string
+              example: "Blanco"
+            BirthYear:
+              type: string
+              example: "2001"
+            Nationality:
+              type: string
+              nullable: true
+              example: "Ecuatoriano"
+
+  responses:
+    '201':
+      description: Author creado con exito
+      content:
+        application/json:
+          example:
+            status: '201'
+            data:
+              id: 1
+              FirstName: "Riki"
+              LastName: "Blanco"
+              BirthYear: "2001"
+              Nationality: "Ecuatoriano"
+
+    '406':
+      description: No se recibieron datos
+      content:
+        application/json:
+          example:
+            status: '406'
+            message: "No se recibieron datos"
+
+    '500':
+      description: Error del servidor
+      content:
+        application/json:
+          example:
+            status: '500'
+            message: "Error del servidor"
